@@ -1,0 +1,7 @@
+docker build --no-cache -t verified-bill .
+docker tag verified-bill tensazangetsu1/verified-bill
+docker push tensazangetsu1/verified-bill
+
+
+npm run build
+xcopy .\dist\ ..\backend\dist /E/H/C/I

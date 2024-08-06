@@ -1,0 +1,121 @@
+Sr.No.,Zone,Circle,Division
+1,CENTRAL,ETC Bareilly,400 kV S/S Div. Bareilly
+2,CENTRAL,ETC Bareilly,ETD Bareilly-I
+3,CENTRAL,ETC Bareilly,ETD Bareilly-II
+4,CENTRAL,ETC Bareilly,ETD Budaun
+5,CENTRAL,ETC Gonda,ETD Behraich
+6,CENTRAL,ETC Gonda,ETD Gonda
+7,CENTRAL,ETC Lucknow-I,ETD Lucknow-I
+8,CENTRAL,ETC Lucknow-I,ETD Lucknow-II
+9,CENTRAL,ETC Lucknow-I,ETD Lucknow-III (Barabanki)
+10,CENTRAL,ETC Lucknow-II,400 kV S/S Div Sarojini Nagar Lucknow
+11,CENTRAL,ETC Lucknow-II,400kV S/S Div.Unnao
+12,CENTRAL,ETC Lucknow-II,765kV S/S Div. Unnao
+13,CENTRAL,ETC Lucknow-II,ETD Unnao
+14,CENTRAL,ETC Lucknow-II,ETD Raebareli
+15,CENTRAL,ETC Shahjahanpur,ETD Hardoi
+16,CENTRAL,ETC Shahjahanpur,ETD Lakhimpur
+17,CENTRAL,ETC Shahjahanpur,ETD Shahjahanpur
+18,CENTRAL,ETC Shahjahanpur,ETD Sitapur
+19,CENTRAL,ETC Sultanpur,400 kV S/S Div. Sultanpur
+20,CENTRAL,ETC Sultanpur,ETD Ayodhya
+21,CENTRAL,ETC Sultanpur,ETD Raebareli
+22,CENTRAL,ETC Sultanpur,ETD Sultanpur
+23,CENTRAL,PPP-ATL(C),PPP-ATL
+24,CENTRAL,PPP-ATL(C),OBTL
+25,CENTRAL,PPP-SEUPPTCL(C),PPP-SEUPPTCL
+26,CENTRAL,PPP-PG(C),PPP-PG-
+27,NORTH-EAST,ETC Azamgarh,400 kV S/S Div Azamgarh
+28,NORTH-EAST,ETC Azamgarh,ETD Azamgarh
+29,NORTH-EAST,ETC Azamgarh,ETD Ballia
+30,NORTH-EAST,ETC Azamgarh,ETD Mau
+31,NORTH-EAST,ETC Azamgarh,ELECTRICITY 400KV KASARA
+32,NORTH-EAST,ETC Azamgarh,ETD Mau
+33,NORTH-EAST,ETC Azamgarh,ETD BALLIA
+34,NORTH-EAST,ETC Azamgarh,400KV Mau
+35,NORTH-EAST,ETC Basti,ETD Basti-I
+36,NORTH-EAST,ETC Basti,ETD Basti-II
+37,NORTH-EAST,ETC Gorakhpur,400 kV S/S Div. Gorakhpur
+38,NORTH-EAST,ETC Gorakhpur,ETD Deoria
+39,NORTH-EAST,ETC Gorakhpur,ETD Gorakhpur-I
+40,NORTH-EAST,ETC Gorakhpur,ETD Gorakhpur-II
+41,SOUTH-CENTRAL,ETC Banda,400 kV S/S Div. Banda
+42,SOUTH-CENTRAL,ETC Banda,ETD Banda
+43,SOUTH-CENTRAL,ETC Banda,ETD Hamirpur
+44,SOUTH-CENTRAL,ETC Jhansi,400 kV S/S Div. Orai
+45,SOUTH-CENTRAL,ETC Jhansi,ETD Jhansi
+46,SOUTH-CENTRAL,ETC Jhansi,ETD Orai
+47,SOUTH-EAST,ETC Varanasi-II,ETD Ghazipur
+48,SOUTH-EAST,ETC Varanasi-II,ETD Jaunpur
+49,SOUTH-EAST,ETC Varanasi-II,ETD Jaunpur-II
+50,SOUTH-EAST,ETC Mirzapur,ETD Mirzapur
+51,SOUTH-EAST,ETC Mirzapur,ETD Robertsganj
+52,SOUTH-EAST,ETC Mirzapur,"ETD Varanasi -IV, (Bhadhoi)"
+53,SOUTH-EAST,ETC Prayagraj-I,ETD Fatehpur
+54,SOUTH-EAST,ETC Prayagraj-I,ETD Pratapgarh
+55,SOUTH-EAST,ETC Prayagraj-I,ETD Prayagraj-I
+56,SOUTH-EAST,ETC Prayagraj-II,ETD Kaushambi
+57,SOUTH-EAST,ETC Prayagraj-II,ETD Prayagraj-II
+58,SOUTH-EAST,ETC Prayagraj-II,ETD Prayagraj-III
+59,SOUTH-EAST,ETC Varanasi,400kV S/S Div Sarnath
+60,SOUTH-EAST,ETC Varanasi,ETD Chandauli
+61,SOUTH-EAST,ETC Varanasi,ETD Sahupuri
+62,SOUTH-EAST,ETC Varanasi,ETD Varanasi
+63,SOUTH-EAST,PPP-SEUPPTCL(SW),PPP-SEUPPTCL
+64,SOUTH-WEST,ETC Agra,400 kV S/S Div. Agra
+65,SOUTH-WEST,ETC Agra,"765 kV S/S Div. Fatehabad, Agra"
+66,SOUTH-WEST,ETC Agra,ETD Agra-I
+67,SOUTH-WEST,ETC Agra,ETD Agra-II
+68,SOUTH-WEST,ETC Agra,ETD Agra-III
+69,SOUTH-WEST,ETC Agra,ETD Firozabad
+70,SOUTH-WEST,ETC Agra,220 kv Div Agra
+71,SOUTH-WEST,ETC Aligarh,400 kV Div. Aligarh
+72,SOUTH-WEST,ETC Aligarh,ETD Aligarh-I
+73,SOUTH-WEST,ETC Aligarh,ETD Aligarh-II
+74,SOUTH-WEST,ETC Aligarh,ETD Mainpuri
+75,SOUTH-WEST,ETC Kanpur-I,"220 kV Div. Panki, Kanpur"
+76,SOUTH-WEST,ETC Kanpur-I,"400 kV Div. Panki, Kanpur"
+77,SOUTH-WEST,ETC Kanpur-I,ETD Kanpur-I
+78,SOUTH-WEST,ETC Mathura,400 kV S/S Div. Agra (South)
+79,SOUTH-WEST,ETC Mathura,ETD Hathras
+80,SOUTH-WEST,ETC Mathura,ETD Mathura
+81,SOUTH-WEST,ETC Mathura,400KV S/S Division maant
+82,SOUTH-WEST,ETC Kanpur-II,ETD Etawah
+83,SOUTH-WEST,ETC Kanpur-II,ETD Fatehgarh
+84,SOUTH-WEST,ETC Kanpur-II,ETD Kanpur-II
+85,SOUTH-WEST,ETC Kanpur-II,400 kV S/S Div Etawah
+86,SOUTH-WEST,PPP-SEUPPTCL(SW),PPP-SEUPPTCL
+87,SOUTH-WEST,PPP-PG(SW),PPP-PG
+88,SOUTH-WEST,PPP-PG(SW),PGJFTL
+89,WEST,ETC Ghaziabad,400 kV S/S Div Muradnagar -I
+90,WEST,ETC Ghaziabad,400 kV S/S Div Muradnagar -II
+91,WEST,ETC Ghaziabad,ETD Ghaziabad-I
+92,WEST,ETC Ghaziabad,ETD Ghaziabad-II
+93,WEST,ETC Ghaziabad,ETD Muradnagar
+94,WEST,ETC Gr.Noida,400 kV S/S Div Gr. Noida
+95,WEST,ETC Gr.Noida,400 kV S/S Div Gr. Noida
+96,WEST,ETC Gr.Noida,ETD Bulandshahar
+97,WEST,ETC Gr.Noida,ETD Hapur
+98,WEST,ETC Gr.Noida,ETD Hapur
+99,WEST,ETC Gr.Noida,ETD Khurja
+100,WEST,ETC Meerut,ETD Baraut
+101,WEST,ETC Meerut,ETD Meerut-I
+102,WEST,ETC Meerut,ETD Meerut-II
+103,WEST,ETC Moradabad-I,400kV S/S Div Moradabad
+104,WEST,ETC Moradabad-I,ETD Moradabad-I
+105,WEST,ETC Moradabad-I,ETD Moradabad-II
+106,WEST,ETC Moradabad-I,ETD Rampur
+107,WEST,ETC Moradabad-I,ETD Sambhal
+108,WEST,ETC Morodabad-II,ETD Amroha
+109,WEST,ETC Morodabad-II,ETD Bijnore
+110,WEST,ETC Morodabad-II,ETD Dhampur
+111,WEST,ETC Muzaffarnagar,400 kV S/S Div Muzaffarnagar
+112,WEST,ETC Muzaffarnagar,ETD Muzaffarnagar
+113,WEST,ETC Muzaffarnagar,ETD Saharanpur-I
+114,WEST,ETC Muzaffarnagar,ETD Saharanpur-II
+115,WEST,ETC Muzaffarnagar,ETD Shamli
+116,WEST,ETC Noida,ETD Noida-I
+117,WEST,ETC Noida,ETD Noida-II
+118,WEST,PPP-PG(W),PGMSTL
+119,WEST,PPP-PG(W),PGRSTL
+120,WEST,PPP-WUPPTCL(W),PPP-WUPPTCL
