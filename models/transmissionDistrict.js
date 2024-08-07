@@ -1,4 +1,5 @@
 import  mongoose from "mongoose";
+import mongoosePaginate  from 'mongoose-paginate-v2';
 
 const districtSchema = new mongoose.Schema({     
     districtName: String,
@@ -7,6 +8,7 @@ const districtSchema = new mongoose.Schema({
         default: 0
     }
 });
+districtSchema.plugin(mongoosePaginate);
 
 export default mongoose.model('tm-districts', districtSchema);
 

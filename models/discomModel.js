@@ -1,4 +1,5 @@
 import  mongoose from "mongoose";
+import mongoosePaginate  from 'mongoose-paginate-v2';
 
 const discomSchema = new mongoose.Schema({
     discomName: String,
@@ -8,6 +9,7 @@ const discomSchema = new mongoose.Schema({
         default: 0
     }
 });
+discomSchema.plugin(mongoosePaginate);
 
 export default mongoose.model('discoms', discomSchema);
 

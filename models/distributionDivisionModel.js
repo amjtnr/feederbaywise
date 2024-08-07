@@ -1,4 +1,5 @@
 import  mongoose from "mongoose";
+import mongoosePaginate  from 'mongoose-paginate-v2';
 
 const divisionSchema = new mongoose.Schema({
     circle_ID: {
@@ -12,6 +13,7 @@ const divisionSchema = new mongoose.Schema({
         default: 0
     }
 });
+divisionSchema.plugin(mongoosePaginate);
 
 export default mongoose.model('dm-divisions', divisionSchema);
 

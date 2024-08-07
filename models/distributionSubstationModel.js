@@ -25,7 +25,17 @@ const subStationSchema = new mongoose.Schema({
     subStationCode: String,
     capacityUnitSubStation: String,
     jeeName: String,
-    jeeNumber: String    
+    jeeNumber: String,
+    startMonth:String,
+    startYear:String,
+    transmissionDetail:[{
+        district:String,
+        subStationName:String,
+        zone:String,
+        circle:String,
+        division:String
+    }]
+
 });
 
 subStationSchema.plugin(mongoosePaginate);

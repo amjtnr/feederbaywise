@@ -1,4 +1,5 @@
 import path from 'path';
+import mongoose from "mongoose";
 import { fileURLToPath } from 'url';
 import fs from 'fs';
 import csvParser from 'csv-parser';
@@ -52,24 +53,116 @@ export const exportZonesController = async (req,res,next) => {
 }
 }
 
-// export const listDMSubStationController = async(req,res,next)=>{
-//   try{
-//     const pageNumber = req.body.page || 1;
-//     const pageSize = req.body.pageSize || 200;
-   
-//     var searchStr = {}
-
-//     await substationModel.paginate(searchStr , { page: pageNumber, limit: pageSize,sort:{_id:-1}  }, (err, result) => {
-//     if (err) {
-//         return res.status(404).send({message:"Error occurred while fetching records",status:404,records:[]});
-//     }
-//     const { docs, totalDocs, limit, page, totalPages,prevPage,nextPage    } = result;
-//     return res.status(200).send({ status:200,records: docs, Total:totalDocs, Limit:limit, Page:page, pages:totalPages,prevPage:prevPage, nextPage:nextPage});
-//     });
-
-// }catch(error){
-//     return res.status(500).send({message:"error occured",status:500,errorMessage:error,records:[]});
-// }
 
 
-// }
+
+
+export const createZone = async (req, res) => {
+  try {
+      const { discom_ID, zoneName } = req.body;
+      if (!discom_ID || !zoneName) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: 'discom_ID and zoneName are required' });
+      }
+      const result = await zonesModel.create(req.body);
+      return res.status(200).send({ result, statusCode: '200', message: 'Created successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in adding zone', error });
+  }
+};
+
+export const updateZone = async (req, res) => {
+  try {
+      const { id, discom_ID, zoneName } = req.body;
+      if (!id || !discom_ID || !zoneName) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: 'ID, discom_ID, and zoneName are required' });
+      }
+      const resultCheck = await zonesModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ result: {}, statusCode: 404, message: 'ID not found' });
+      }
+      const result = await zonesModel.findByIdAndUpdate(id, req.body, { new: true });
+      return res.status(200).send({ result, statusCode: '200', message: 'Updated successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in updating zone', error });
+  }
+};
+
+export const deleteZone = async (req, res) => {
+  try {
+      const { id } = req.body;
+      if (!id) {
+          return res.status(400).json({ statusCode: 400, message: 'ID required' });
+      }
+      const resultCheck = await zonesModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ statusCode: 404, message: 'ID not found' });
+      }
+      const deletedDiscom = await zonesModel.findByIdAndUpdate(id, { isDeleted: 1 }, { new: true });
+      return res.status(200).json({ statusCode: 200, message: 'Deleted successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in deleting zone', error });
+  }
+};
+
+export const getZones = async (req, res) => {
+  try {
+      const { page = 1, limit = 10 } = req.body;
+     
+      const aggregateQuery = zonesModel.aggregate([
+        { $match: { isDeleted: 0 } },
+        { $lookup: {
+            from: 'discoms',
+            localField: 'discom_ID',
+            foreignField: '_id',
+            as: 'discomDetails'
+        }},
+        { $unwind: '$discomDetails' },
+        { $sort: { zoneName: 1 } }
+    ]);
+
+    const options = {
+        page: Number(page),
+        limit: Number(limit)
+    };
+
+    const result = await zonesModel.aggregatePaginate(aggregateQuery, options);
+
+
+
+      return res.status(200).json({ statusCode: 200, result });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+  }
+}
+
+export const getDiscomZones = async (req, res) => {
+  try {
+      const { page = 1, limit = 10,discom_ID  } = req.body;
+     
+      const aggregateQuery = zonesModel.aggregate([
+        { $match: { isDeleted: 0, discom_ID: new mongoose.Types.ObjectId(discom_ID) } },
+        { $lookup: {
+            from: 'discoms',
+            localField: 'discom_ID',
+            foreignField: '_id',
+            as: 'discomDetails'
+        }},
+        { $unwind: '$discomDetails' },
+        { $sort: { zoneName: 1 } }
+    ]);
+
+    const options = {
+        page: Number(page),
+        limit: Number(limit)
+    };
+
+    const result = await zonesModel.aggregatePaginate(aggregateQuery, options);
+
+
+
+      return res.status(200).json({ statusCode: 200, result });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+  }
+}
+

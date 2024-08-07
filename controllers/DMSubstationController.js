@@ -88,3 +88,78 @@ export const listDMSubStationController = async(req,res,next)=>{
 
 
 }
+
+
+
+
+
+export const createSubstation = async (req, res) => {
+  try {
+      const { divisionName, substationName, subStationCode, capacityUnitSubStation, jeeName, jeeNumber, startMonth, startYear } = req.body;
+      if (!divisionName || !substationName || !subStationCode || !capacityUnitSubStation || !jeeName || !jeeNumber || !startMonth || !startYear ) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: '* marked fields are required' });
+      }
+      const result = await substationModel.create(req.body);
+      return res.status(200).send({ result, statusCode: '200', message: 'Created successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in adding zone', error });
+  }
+};
+
+export const updateSubstation = async (req, res) => {
+  try {
+    const { id, divisionName, substationName, subStationCode, capacityUnitSubStation, jeeName, jeeNumber, startMonth, startYear } = req.body;
+    if (!id || !divisionName || !substationName || !subStationCode || !capacityUnitSubStation || !jeeName || !jeeNumber || !startMonth || !startYear ) {
+      return res.status(400).send({ result: {}, statusCode: '400', message: '* marked fields are required' });
+    }
+      const resultCheck = await substationModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ result: {}, statusCode: 404, message: 'ID not found' });
+      }
+      const result = await substationModel.findByIdAndUpdate(id, req.body, { new: true });
+      return res.status(200).send({ result, statusCode: '200', message: 'Updated successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in updating substation', error });
+  }
+};
+
+export const deleteSubstation = async (req, res) => {
+  try {
+      const { id } = req.body;
+      if (!id) {
+          return res.status(400).json({ statusCode: 400, message: 'ID required' });
+      }
+      const resultCheck = await substationModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ statusCode: 404, message: 'ID not found' });
+      }
+      const deletedDiscom = await substationModel.findByIdAndUpdate(id, { isDeleted: 1 }, { new: true });
+      return res.status(200).json({ statusCode: 200, message: 'Deleted successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in deleting substation', error });
+  }
+};
+
+export const getSubstations = async (req, res) => {
+  try {
+
+    const {page, limit,divisionName} = req.body;
+    const query = { isDeleted: 0 };
+    if(division){
+      query = { isDeleted: 0, divisionName:divisionName}; // Only fetch non-deleted discoms
+    }
+      const options = {
+          page: page,
+          limit: limit,
+          sort: { substationName: 1 } // Sort by discomName in ascending order
+      };
+      const result = await substationModel.paginate(query, options);
+      return res.status(200).json({status:200,result:result});
+
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+  }
+}
+
+
+

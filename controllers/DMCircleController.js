@@ -50,3 +50,118 @@ export const exportCircleController = async (req,res,next) => {
         return res.status(500).send({message:"Export issue "+error,status:false,statusCode:500,user:[],errorMessage:error});
     }
 }
+
+
+
+
+
+export const createCircle = async (req, res) => {
+  try {
+      const { zone_ID, circleName } = req.body;
+      if (!zone_ID || !circleName) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: 'zone_ID and circleName are required' });
+      }
+      const result = await circlesModel.create(req.body);
+      return res.status(200).send({ result, statusCode: '200', message: 'Created successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in adding zone', error });
+  }
+};
+
+export const updateCircle = async (req, res) => {
+  try {
+      const { id, zone_ID, circleName } = req.body;
+      if (!id || !zone_ID || !circleName) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: 'ID, zone_ID, and circleName are required' });
+      }
+      const resultCheck = await circlesModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ result: {}, statusCode: 404, message: 'ID not found' });
+      }
+      const result = await circlesModel.findByIdAndUpdate(id, req.body, { new: true });
+      return res.status(200).send({ result, statusCode: '200', message: 'Updated successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in updating zone', error });
+  }
+};
+
+export const deleteCircle = async (req, res) => {
+  try {
+      const { id } = req.body;
+      if (!id) {
+          return res.status(400).json({ statusCode: 400, message: 'ID required' });
+      }
+      const resultCheck = await circlesModel.findById(id);
+      if (!resultCheck) {
+          return res.status(404).json({ statusCode: 404, message: 'ID not found' });
+      }
+      const deletedDiscom = await circlesModel.findByIdAndUpdate(id, { isDeleted: 1 }, { new: true });
+      return res.status(200).json({ statusCode: 200, message: 'Deleted successfully' });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in deleting zone', error });
+  }
+};
+
+export const getCircles = async (req, res) => {
+  try {
+      const { page = 1, limit = 10 } = req.body;
+     
+      const aggregateQuery = circlesModel.aggregate([
+        { $match: { isDeleted: 0 } },
+        { $lookup: {
+            from: 'dm-zones',
+            localField: 'zone_ID',
+            foreignField: '_id',
+            as: 'zoneDetails'
+        }},
+        { $unwind: '$zoneDetails' },
+        { $sort: { circleName: 1 } }
+    ]);
+
+    const options = {
+        page: Number(page),
+        limit: Number(limit)
+    };
+
+    const result = await zonesModel.aggregatePaginate(aggregateQuery, options);
+
+
+
+      return res.status(200).json({ statusCode: 200, result });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+  }
+}
+
+export const getZoneCircles = async (req, res) => {
+  try {
+      const { page = 1, limit = 10,zone_ID  } = req.body;
+     
+      const aggregateQuery = circlesModel.aggregate([
+        { $match: { isDeleted: 0, zone_ID: new mongoose.Types.ObjectId(zone_ID) } },
+        { $lookup: {
+          from: 'dm-zones',
+          localField: 'zone_ID',
+          foreignField: '_id',
+          as: 'zoneDetails'
+      }},
+        { $unwind: '$zoneDetails' },
+        { $sort: { circleName: 1 } }
+    ]);
+
+    const options = {
+        page: Number(page),
+        limit: Number(limit)
+    };
+
+    const result = await circlesModel.aggregatePaginate(aggregateQuery, options);
+
+
+
+      return res.status(200).json({ statusCode: 200, result });
+  } catch (error) {
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+  }
+}
+
+
