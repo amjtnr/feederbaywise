@@ -4,7 +4,7 @@ import {exportController,createSubstation,updateSubstation,getSubstations,delete
 import {listDMSubdivisionController} from "../controllers/DMSubdivisionController.js";
 import {exportDistrictController,createDistrict,updateDistrict,getDistricts,deleteDistricts} from "../controllers/DMDistrictsController.js";
 import {exportZonesController,createZone,updateZone,deleteZone,getZones,getDiscomZones} from "../controllers/DMZonesController.js";
-import {deleteCircle, exportCircleController,createCircle,updateCircle,getCircles,getZoneCircles} from "../controllers/DMCircleController.js";
+import {exportCircleController,createCircle,updateCircle,getCircles,getZoneCircles,deleteCircle} from "../controllers/DMCircleController.js";
 import {exportDiscomController,addDiscom,editDiscom,listDiscoms,softDeleteDiscom} from "../controllers/DiscomController.js";
 import {exportDivisionController,createDivision,updateDivision,getDivisions,getCircleDivisions,deleteDivision} from "../controllers/DMDivisionController.js";
 import { createIncommingFeeder, deleteIncommingFeeder, getIncommingFeeders, updateIncommingFeeder } from "../controllers/DMIncommingFeederController.js";

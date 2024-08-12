@@ -53,10 +53,6 @@ export const exportZonesController = async (req,res,next) => {
 }
 }
 
-
-
-
-
 export const createZone = async (req, res) => {
   try {
       const { discom_ID, zoneName } = req.body;

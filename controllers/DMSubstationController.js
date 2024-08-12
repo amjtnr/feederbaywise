@@ -67,6 +67,7 @@ export const exportController = async (req,res,next) => {
     }
 }
 
+
 export const listDMSubStationController = async(req,res,next)=>{
   try{
     const pageNumber = req.body.page || 1;
@@ -88,9 +89,6 @@ export const listDMSubStationController = async(req,res,next)=>{
 
 
 }
-
-
-
 
 
 export const createSubstation = async (req, res) => {

@@ -1,5 +1,6 @@
 import  mongoose from "mongoose";
 import mongoosePaginate  from 'mongoose-paginate-v2';
+import aggregatePaginate from 'mongoose-aggregate-paginate-v2';
 
 const circleSchema = new mongoose.Schema({  
     zone_ID: {
@@ -14,6 +15,7 @@ const circleSchema = new mongoose.Schema({
     }
 });
 circleSchema.plugin(mongoosePaginate);
+circleSchema.plugin(aggregatePaginate);
 
 export default mongoose.model('tm-circles', circleSchema);
 
