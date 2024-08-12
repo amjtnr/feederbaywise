@@ -15,7 +15,7 @@ const subStationSchema = new mongoose.Schema({
     },
     division_ID: {
         type: mongoose.ObjectId,
-        ref: "divisions"
+        ref: "dm-divisions"
     },
     discomName: String,
     zoneName: String,
@@ -34,7 +34,11 @@ const subStationSchema = new mongoose.Schema({
         zone:String,
         circle:String,
         division:String
-    }]
+    }],
+    isDeleted:{
+        type: Number,
+        default: 0
+    }
 
 });
 

@@ -112,8 +112,8 @@ export const getDivisions = async (req, res) => {
             localField: 'circle_ID',
             foreignField: '_id',
             as: 'circleDetails'
-        }},
-        { $unwind: '$circleDetails' },
+        }},      
+        { $unwind: { path: '$circleDetails', preserveNullAndEmptyArrays: true } },
         { $sort: { divisionName: 1 } }
     ]);
 
@@ -128,7 +128,7 @@ export const getDivisions = async (req, res) => {
 
       return res.status(200).json({ statusCode: 200, result });
   } catch (error) {
-      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones '+error, error });
   }
 }
 

@@ -27,6 +27,7 @@ export const getIncommingFeeders = async (req, res) => {
 
 export const createIncommingFeeder = async (req,res) => {
   try {
+  
       const {divisionName,substationName,feederName,feederVoltage,meterMake,meterSLNo,overAllMF} = req.body;
       if (!divisionName || !substationName ||!feederName ||!feederVoltage ||!meterMake ||!meterSLNo ||!overAllMF ) {
         return res.status(400).send({ result:{},statusCode:"400", message: '* marked fields are required' });

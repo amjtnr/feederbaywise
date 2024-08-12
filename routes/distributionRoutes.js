@@ -19,20 +19,20 @@ const router = express.Router();
 // router.get("/dm-substation/list",  listDMSubStationController);
 router.get("/dm-subdivision/list",  listDMSubdivisionController);
 
-router.post("/export-discom",  exportDiscomController);
+//router.post("/export-discom",  exportDiscomController);
 router.post("/add-discom",  addDiscom);
 router.put("/edit-discom",  editDiscom);
 router.post("/list-discom",  listDiscoms);
 router.delete("/delete-discom",  softDeleteDiscom);
 
-router.post("/export-zones",  exportZonesController);
+//router.post("/export-zones",  exportZonesController);
 router.post("/add-zone",  createZone);
 router.put("/edit-zone",  updateZone);
 router.post("/list-zone",  getZones);
 router.post("/list-discom-zone",  getDiscomZones);
 router.delete("/delete-zone",  deleteZone);
 
-router.post("/export-circle",  exportCircleController);
+//router.post("/export-circle",  exportCircleController);
 router.post("/add-circle",  createCircle);
 router.put("/edit-circle",  updateCircle);
 router.post("/list-circle",  getCircles);
@@ -40,7 +40,7 @@ router.post("/list-zone-circle",  getZoneCircles);
 router.delete("/delete-circle",  deleteCircle);
 
 
-router.post("/export-division",  exportDivisionController);
+//router.post("/export-division",  exportDivisionController);
 router.post("/add-division",  createDivision);
 router.put("/edit-division",  updateDivision);
 router.post("/list-division",  getDivisions);
@@ -48,15 +48,13 @@ router.post("/list-circle-division",  getCircleDivisions);
 router.delete("/delete-division",  deleteDivision);
 
 
-router.post("/export-district",  exportDistrictController);
+//router.post("/export-district",  exportDistrictController);
 router.post("/add-district",  createDistrict);
 router.put("/edit-district",  updateDistrict);
 router.post("/list-districts",  getDistricts);
 router.delete("/delete-district",  deleteDistricts);
 
-
-
-router.post("/export-substation",  exportController);
+//router.post("/export-substation",  exportController);
 router.post("/add-substation",  createSubstation);
 router.put("/edit-substation",  updateSubstation);
 router.post("/list-substation",  getSubstations);

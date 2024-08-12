@@ -1,3 +1,4 @@
+import  mongoose from "mongoose";
 import path from 'path';
 import { fileURLToPath } from 'url';
 import fs from 'fs';
@@ -57,9 +58,9 @@ export const exportCircleController = async (req,res,next) => {
 
 export const createCircle = async (req, res) => {
   try {
-      const { zone_ID, circleName } = req.body;
-      if (!zone_ID || !circleName) {
-          return res.status(400).send({ result: {}, statusCode: '400', message: 'zone_ID and circleName are required' });
+      const { zone_Id, circleName } = req.body;
+      if (!zone_Id || !circleName) {
+          return res.status(400).send({ result: {}, statusCode: '400', message: 'zone_Id and circleName are required' });
       }
       const result = await circlesModel.create(req.body);
       return res.status(200).send({ result, statusCode: '200', message: 'Created successfully' });
@@ -114,7 +115,7 @@ export const getCircles = async (req, res) => {
             foreignField: '_id',
             as: 'zoneDetails'
         }},
-        { $unwind: '$zoneDetails' },
+        { $unwind: { path: '$zoneDetails', preserveNullAndEmptyArrays: true } },
         { $sort: { circleName: 1 } }
     ]);
 
@@ -129,7 +130,7 @@ export const getCircles = async (req, res) => {
 
       return res.status(200).json({ statusCode: 200, result });
   } catch (error) {
-      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in circle listing', error });
   }
 }
 
@@ -138,14 +139,15 @@ export const getZoneCircles = async (req, res) => {
       const { page = 1, limit = 10,zone_ID  } = req.body;
      
       const aggregateQuery = circlesModel.aggregate([
-        { $match: { isDeleted: 0, zone_ID: new mongoose.Types.ObjectId(zone_ID) } },
+        { $match: { isDeleted: 0, zone_Id: new mongoose.Types.ObjectId(zone_ID) } },
         { $lookup: {
           from: 'dm-zones',
           localField: 'zone_ID',
           foreignField: '_id',
           as: 'zoneDetails'
       }},
-        { $unwind: '$zoneDetails' },
+        
+        { $unwind: { path: '$zoneDetails', preserveNullAndEmptyArrays: true } },
         { $sort: { circleName: 1 } }
     ]);
 
@@ -160,7 +162,7 @@ export const getZoneCircles = async (req, res) => {
 
       return res.status(200).json({ statusCode: 200, result });
   } catch (error) {
-      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones '+ error, error });
   }
 }
 

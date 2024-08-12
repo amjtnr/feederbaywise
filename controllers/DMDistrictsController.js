@@ -65,6 +65,7 @@ export const getDistricts = async (req, res) => {
 
 export const createDistrict = async (req,res) => {
   try {
+ 
       const {districtName} = req.body;
       if (!districtName) {
         return res.status(400).send({ result:{},statusCode:"400", message: 'districtName is required' });

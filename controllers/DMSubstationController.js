@@ -143,9 +143,9 @@ export const deleteSubstation = async (req, res) => {
 export const getSubstations = async (req, res) => {
   try {
 
-    const {page, limit,divisionName} = req.body;
-    const query = { isDeleted: 0 };
-    if(division){
+    const {page, limit,divisionName} = req.body; 
+    var query = { isDeleted: 0 };
+    if(divisionName){
       query = { isDeleted: 0, divisionName:divisionName}; // Only fetch non-deleted discoms
     }
       const options = {
@@ -157,7 +157,7 @@ export const getSubstations = async (req, res) => {
       return res.status(200).json({status:200,result:result});
 
   } catch (error) {
-      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones', error });
+      return res.status(500).send({ result: {}, statusCode: '500', message: 'Error occurred in listing zones '+error, error });
   }
 }
 
